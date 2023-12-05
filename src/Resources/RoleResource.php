@@ -6,13 +6,11 @@ use Althinect\FilamentSpatieRolesPermissions\Resources\RoleResource\Pages\Create
 use Althinect\FilamentSpatieRolesPermissions\Resources\RoleResource\Pages\EditRole;
 use Althinect\FilamentSpatieRolesPermissions\Resources\RoleResource\Pages\ListRoles;
 use Althinect\FilamentSpatieRolesPermissions\Resources\RoleResource\Pages\ViewRole;
-use Althinect\FilamentSpatieRolesPermissions\Resources\RoleResource\RelationManager\PermissionRelationManager;
 use Althinect\FilamentSpatieRolesPermissions\Resources\RoleResource\RelationManager\UserRelationManager;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Grid;
-use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
