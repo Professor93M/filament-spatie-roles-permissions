@@ -23,4 +23,5 @@ return [
     'section.role' => 'صلاحية',
     'section.roles' => 'الصلاحيات',
     'section.roles_and_permissions' => 'الصلاحيات والأذونات',
+    'section.users' => 'المستخدمين',
 ];

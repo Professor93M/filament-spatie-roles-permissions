@@ -9,7 +9,10 @@ use Althinect\FilamentSpatieRolesPermissions\Resources\RoleResource\Pages\ViewRo
 use Althinect\FilamentSpatieRolesPermissions\Resources\RoleResource\RelationManager\PermissionRelationManager;
 use Althinect\FilamentSpatieRolesPermissions\Resources\RoleResource\RelationManager\UserRelationManager;
 use Filament\Facades\Filament;
+use Filament\Forms\Components\CheckboxList;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -70,11 +73,11 @@ class RoleResource extends Resource
                                 //     ->options(config('filament-spatie-roles-permissions.guard_names'))
                                 //     ->default(config('filament-spatie-roles-permissions.default_guard_name'))
                                 //     ->required(),
-                                Select::make('permissions')
-                                    ->multiple()
-                                    ->label(__('filament-spatie-roles-permissions::filament-spatie.field.permissions'))
-                                    ->relationship('permissions', 'name')
-                                    ->preload(config('filament-spatie-roles-permissions.preload_permissions')),
+                                // Select::make('permissions')
+                                //     ->multiple()
+                                //     ->label(__('filament-spatie-roles-permissions::filament-spatie.field.permissions'))
+                                //     ->relationship('permissions', 'name')
+                                //     ->preload(config('filament-spatie-roles-permissions.preload_permissions')),
                                 Select::make(config('permission.column_names.team_foreign_key', 'team_id'))
                                     ->label(__('filament-spatie-roles-permissions::filament-spatie.field.team'))
                                     ->hidden(fn () => ! config('permission.teams', false) || Filament::hasTenancy())
@@ -86,6 +89,19 @@ class RoleResource extends Resource
                                     ->hint(__('filament-spatie-roles-permissions::filament-spatie.select-team-hint')),
                             ]),
                     ]),
+                Section::make()
+                    ->schema([
+                        Fieldset::make('صلاحيات المستخدم')
+                            ->schema([
+                                CheckboxList::make('permissions')
+                                    ->label('الصلاحيات')
+                                    ->relationship('permissions', 'name')->columns(5)
+                                    ->searchable()
+                                    ->bulkToggleable()
+                            ])
+                            ->columns(1)
+                            
+                    ])
             ]);
     }
 
@@ -124,7 +140,7 @@ class RoleResource extends Resource
     public static function getRelations(): array
     {
         return [
-            PermissionRelationManager::class,
+            // PermissionRelationManager::class,
             UserRelationManager::class,
         ];
     }
