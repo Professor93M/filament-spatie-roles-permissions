@@ -21,6 +21,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Spatie\Permission\Models\Role;
 
 class RoleResource extends Resource
@@ -109,17 +110,17 @@ class RoleResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')
-                    ->label('ID')
-                    ->searchable(),
+                TextColumn::make('index')
+                    ->label('#')
+                    ->rowIndex(),
                 TextColumn::make('name')
                     ->label(__('filament-spatie-roles-permissions::filament-spatie.field.name'))
                     ->searchable(),
-                TextColumn::make('permissions_count')
-                    ->counts('permissions')
-                    ->label(__('filament-spatie-roles-permissions::filament-spatie.field.permissions_count'))
-                    ->toggleable(isToggledHiddenByDefault: config('filament-spatie-roles-permissions.toggleable_guard_names.roles.isToggledHiddenByDefault', true)),
-            ])
+                // TextColumn::make('permissions_count')
+                //     ->counts('permissions')
+                //     ->label(__('filament-spatie-roles-permissions::filament-spatie.field.permissions_count'))
+                //     ->toggleable(isToggledHiddenByDefault: config('filament-spatie-roles-permissions.toggleable_guard_names.roles.isToggledHiddenByDefault', true)),
+            ])->modifyQueryUsing(fn (Builder $query) => $query->where('id', '!=', 1))
             ->filters([
 
             ])
