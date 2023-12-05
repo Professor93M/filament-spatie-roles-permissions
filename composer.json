@@ -1,11 +1,11 @@
 {
-    "name": "althinect/filament-spatie-roles-permissions",
+    "name": "professor/filament-spatie-roles-permissions",
     "description": "",
     "keywords": [
-        "althinect",
+        "Professor93M",
         "filament-spatie-roles-permissions"
     ],
-    "homepage": "https://github.com/althinect/filament-spatie-roles-permissions",
+    "homepage": "https://github.com/Professor93M/filament-spatie-roles-permissions",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -28,12 +28,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Althinect\\FilamentSpatieRolesPermissions\\": "src"
+            "Professor93M\\FilamentSpatieRolesPermissions\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Althinect\\FilamentSpatieRolesPermissions\\Tests\\": "tests"
+            "Professor93M\\FilamentSpatieRolesPermissions\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -47,10 +47,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Althinect\\FilamentSpatieRolesPermissions\\FilamentSpatieRolesPermissionsServiceProvider"
+                "Professor93M\\FilamentSpatieRolesPermissions\\FilamentSpatieRolesPermissionsServiceProvider"
             ],
             "aliases": {
-                "FilamentSpatieRolesPermissions": "Althinect\\FilamentSpatieRolesPermissions\\FilamentSpatieRolesPermissionsFacade"
+                "FilamentSpatieRolesPermissions": "Professor93M\\FilamentSpatieRolesPermissions\\FilamentSpatieRolesPermissionsFacade"
             }
         }
     },
