@@ -69,11 +69,11 @@ class PermissionResource extends Resource
                             TextInput::make('name')
                                 ->label(__('filament-spatie-roles-permissions::filament-spatie.field.name'))
                                 ->required(),
-                            Select::make('guard_name')
-                                ->label(__('filament-spatie-roles-permissions::filament-spatie.field.guard_name'))
-                                ->options(config('filament-spatie-roles-permissions.guard_names'))
-                                ->default(config('filament-spatie-roles-permissions.default_guard_name'))
-                                ->required(),
+                            // Select::make('guard_name')
+                            //     ->label(__('filament-spatie-roles-permissions::filament-spatie.field.guard_name'))
+                            //     ->options(config('filament-spatie-roles-permissions.guard_names'))
+                            //     ->default(config('filament-spatie-roles-permissions.default_guard_name'))
+                            //     ->required(),
                             Select::make('roles')
                                 ->multiple()
                                 ->label(__('filament-spatie-roles-permissions::filament-spatie.field.roles'))
@@ -82,7 +82,7 @@ class PermissionResource extends Resource
                                     titleAttribute: 'name',
                                     modifyQueryUsing: function(Builder $query) {
                                         if(Filament::hasTenancy()) {
-                                            return $query->where(config('permission.column_names.team_foreign_key'), Filament::getTenant());
+                                            return $query->where(config('permission.team_foreign_key'), Filament::getTenant());
                                         }
                                         return $query;
                                     }
@@ -116,7 +116,7 @@ class PermissionResource extends Resource
                         $models = $commands->getAllModels();
 
                         return array_map(function (\ReflectionClass $model) {
-                            return Checkbox::make($model->getShortName());
+                            return Checkbox::make(trans('models.' . $model->getShortName()));
                         }, $models);
                     })
                     ->query(function (Builder $query, array $data) {

@@ -22,6 +22,7 @@ use Spatie\Permission\Models\Role;
 
 class RoleResource extends Resource
 {
+    protected static ?string $model = Role::class;
 
     public static function getNavigationIcon(): ?string
     {
@@ -64,13 +65,12 @@ class RoleResource extends Resource
                                 TextInput::make('name')
                                     ->label(__('filament-spatie-roles-permissions::filament-spatie.field.name'))
                                     ->required(),
-                                Select::make('guard_name')
-                                    ->label(__('filament-spatie-roles-permissions::filament-spatie.field.guard_name'))
-                                    ->options(config('filament-spatie-roles-permissions.guard_names'))
-                                    ->default(config('filament-spatie-roles-permissions.default_guard_name'))
-                                    ->required(),
+                                // Select::make('guard_name')
+                                //     ->label(__('filament-spatie-roles-permissions::filament-spatie.field.guard_name'))
+                                //     ->options(config('filament-spatie-roles-permissions.guard_names'))
+                                //     ->default(config('filament-spatie-roles-permissions.default_guard_name'))
+                                //     ->required(),
                                 Select::make('permissions')
-                                    ->columnSpanFull()
                                     ->multiple()
                                     ->label(__('filament-spatie-roles-permissions::filament-spatie.field.permissions'))
                                     ->relationship('permissions', 'name')
@@ -103,10 +103,6 @@ class RoleResource extends Resource
                     ->counts('permissions')
                     ->label(__('filament-spatie-roles-permissions::filament-spatie.field.permissions_count'))
                     ->toggleable(isToggledHiddenByDefault: config('filament-spatie-roles-permissions.toggleable_guard_names.roles.isToggledHiddenByDefault', true)),
-                TextColumn::make('guard_name')
-                    ->toggleable(isToggledHiddenByDefault: config('filament-spatie-roles-permissions.toggleable_guard_names.roles.isToggledHiddenByDefault', true))
-                    ->label(__('filament-spatie-roles-permissions::filament-spatie.field.guard_name'))
-                    ->searchable(),
             ])
             ->filters([
 
