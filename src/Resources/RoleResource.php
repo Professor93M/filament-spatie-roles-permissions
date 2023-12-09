@@ -56,6 +56,11 @@ class RoleResource extends Resource
         return __('filament-spatie-roles-permissions::filament-spatie.section.roles');
     }
 
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->hasRole('Super Admin');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
