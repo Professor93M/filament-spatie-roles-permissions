@@ -19,7 +19,7 @@ class FilamentSpatieRolesPermissionsPlugin implements Plugin
         $panel
             ->resources([
                 RoleResource::class,
-                // PermissionResource::class,
+                PermissionResource::class,
             ]);
     }
 
