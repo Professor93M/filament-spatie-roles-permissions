@@ -123,7 +123,7 @@ class RoleResource extends Resource
                 //     ->counts('permissions')
                 //     ->label(__('filament-spatie-roles-permissions::filament-spatie.field.permissions_count'))
                 //     ->toggleable(isToggledHiddenByDefault: config('filament-spatie-roles-permissions.toggleable_guard_names.roles.isToggledHiddenByDefault', true)),
-            ])->modifyQueryUsing(fn (Builder $query) => $query->where('id', '!=', 1))
+            ])->modifyQueryUsing(fn (Builder $query) => $query->where('name', '!=', 'Super Admin'))
             ->filters([
 
             ])
